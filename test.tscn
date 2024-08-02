@@ -1,11 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://banqipdhjknbi"]
 
-[ext_resource type="Texture2D" uid="uid://dkst2o21ka7m3" path="res://icon.svg" id="1_3hosf"]
-[ext_resource type="Script" path="res://Icon.cs" id="2_pdk6f"]
+[ext_resource type="PackedScene" uid="uid://d18112kd5kdry" path="res://player.tscn" id="1_fs767"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lt7wj"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(79, 92)
-texture = ExtResource("1_3hosf")
-script = ExtResource("2_pdk6f")
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("1_fs767")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 165)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_lt7wj")
